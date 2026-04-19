@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Event | Rambu Solo'</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+.nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+.nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+.nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+.nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+.hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+.hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+.container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+.detail-header img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+.detail-body { padding: 30px 10px; }
+
+.detail-body h1 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+.badge-category {
+      background: #D4AF37;
+      color: #8B0000;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+.info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+      padding: 20px;
+      background: #fdf5f5;
+      border-radius: 15px;
+      border-left: 5px solid #8B0000;
+    }
+
+.info-item h4 { margin: 0; color: #8B0000; }
+.info-item p { margin: 5px 0 0; font-size: 14px; }
+
+.maps-container {
+      margin: 30px 0;
+      border: 2px solid #8B0000;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 15px;
+      background: #8B0000;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+.arrow { transition: transform 0.3s; }
+    details[open].arrow { transform: rotate(180deg); }
+
+.google-maps { padding: 10px; background: #eee; }
+
+.btn-back {
+      display: inline-block;
+      background: #8B0000;
+      color: white;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+.btn-back:hover { background: #D4AF37; color: #8B0000; }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+ .hamburger { display: flex; }
+ .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+ .nav-links.active { right: 0; }
+ .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+ .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+ .detail-header img { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+  </div>
+
+  <div class="container">
+    <div class="detail-header">
+      <img src="rambusolo.jpg" alt="Upacara Adat Rambu Solo" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="detail-body">
+      <span class="badge-category">Upacara Adat & Budaya</span>
+      <h1>Rambu Solo'</h1>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h4>Jenis Kegiatan</h4>
+          <p>Upacara Pemakaman Adat</p>
+        </div>
+        <div class="info-item">
+          <h4>Waktu Pelaksanaan</h4>
+          <p>Tidak menentu</p>
+        </div>
+        <div class="info-item">
+          <h4>Durasi</h4>
+          <p>3 sampai 10 Hari (tergantung ekonomi keluarga)</p>
+        </div>
+      </div>
+
+      <div class="description">
+        <p><strong>Rambu Solo'</strong> merupakan upacara pemakaman adat masyarakat Toraja, bertujuan untuk menghormati dan mengantarkan arwah orang yang meninggal menuju alam roh (Puya). Upacara ini merupakan bentuk penyempurnaan kematian karena bagi masyarakat Toraja, seseorang belum dianggap benar-benar mati sebelum upacara ini dilaksanakan.</p>
+        <p>Upacara ini melibatkan berbagai ritual unik, seperti penyembelihan kerbau (Ma'tinggoro Tedong), tarian adat (Ma'badong), serta perarakan peti mati ke tempat persemayaman terakhir di tebing atau gua. Berikut Etika yang wajib dipatuhi saat akan berkunjung: </p>
+        <ul>
+          <li>Memakai baju sopan bewarna gelap</li>
+          <li>Membawa rokok/gula/kopi untuk keluarga yang berduka</li>
+          <li>Tidak memotret saat keluarga sedang berduka (menangis/histeris)</li>
+          <li>Ikut duduk, mengobrol, dan menikmati kopi.</li>
+        </ul>
+      </div>
+
+      <div class="maps-container">
+        <details>
+          <summary>Lokasi Pelaksanaan (Klik di sini) <span class="arrow">▼</span></summary>
+          <div class="google-maps">
+            <p style="padding: 15px; font-size: 14px;">Upacara Rambu Solo diadakan di kampung halaman orang yang meninggal, biasanya di lapangan tongkonan keluarga.</p>
+          </div>
+        </details>
+      </div>
+
+      <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = src;
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
