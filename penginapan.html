@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Akomodasi | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .btn-booking-float {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #D4AF37;
+      color: #8B0000;
+      padding: 15px 20px;
+      border-radius: 50px 0 0 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: -4px 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: 0.3s;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .btn-booking-float:hover {
+      background: #8B0000;
+      color: #D4AF37;
+      right: 25px;
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 10px;
+      animation: zoomIn 0.3s ease;
+      object-fit: contain;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 10000;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("toraja-heritage.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    .filter-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 900px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: white;
+      color: #8B0000;
+      border: 1px solid #8B0000;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .filter-btn:hover {
+      background: #8B0000;
+      color: white;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .underline {
+      width: 70px;
+      height: 4px;
+      background: #D4AF37;
+      margin: 0 auto 40px;
+    }
+
+    .section-desc {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #555;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 20px;
+    }
+
+    .info h3 {
+      font-size: 19px;
+      color: #8B0000;
+      margin: 0 0 10px 0;
+    }
+
+    .info p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: #D4AF37;
+      color: #8B0000;
+      font-size: 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px); 
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto; 
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+      .filter-box { flex-direction: column; border-radius: 20px; padding: 15px; }
+      .btn-booking-float {
+        padding: 12px 15px;
+        font-size: 14px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <a href="booking.html" class="btn-booking-float">BOOKING</a>
+
+  <header class="hero">
+    <h1>Penginapan Toraja</h1>
+    <p>Rekomendasi tempat istirahat dengan kenyamanan terbaik</p>
+    
+    <div class="filter-box">
+      <button class="filter-btn" onclick="scrollToId('eco-stay')">Eco-Friendly Stay</button>
+      <button class="filter-btn" onclick="scrollToId('staycation')">Staycation Idea</button>
+      <button class="filter-btn" onclick="scrollToId('homestay')">Homestay Agrowisata</button>
+    </div>
+  </header>
+
+  <section>
+    <h2>Jenis Penginapan</h2>
+    <div class="underline"></div>
+    <p class="section-desc">Klik card untuk detail lengkap</p>
+    <div class="product-grid">
+      
+      <a href="penginapan-toraja-heritage.html" class="product-card" id="eco-stay">
+        <img src="toraja-heritage.jpg" alt="Toraja Heritage">
+        <div class="info">
+          <div class="badge">Eco-Friendly Stay</div>
+          <h3>Toraja Heritage Hotel</h3>
+          <p>Bangunan berbentuk Tongkonan dengan sertifikasi ramah lingkungan. View lembah Rantepao.</p>
+        </div>
+      </a>
+
+      <a href="penginapan-misiliana.html" class="product-card" id="staycation">
+        <img src="misiliana.jpg" alt="Misiliana">
+        <div class="info">
+          <div class="badge">Staycation Idea</div>
+          <h3>Misiliana Hotel</h3>
+          <p>Resor mewah dengan kolam infinity view pegunungan. Cocok buat honeymoon & work from hotel.</p>
+        </div>
+      </a>
+
+      <a href="penginapan-homestay.html" class="product-card" id="homestay">
+        <img src="homestay.jpg" alt="Homestay">
+        <div class="info">
+          <div class="badge">Authentic Experience</div>
+          <h3>Homestay Desa Adat</h3>
+          <p>Tinggal langsung di rumah penduduk lokal. Ikut ke sawah, bikin kopi, masak Pa'piong bareng.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    function scrollToId(id) {
+      const targetElement = document.getElementById(id);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+
+        targetElement.style.border = "2px solid #D4AF37";
+        targetElement.style.transform = "scale(1.05)";
+        
+        setTimeout(() => {
+          targetElement.style.border = "1px solid #ddd";
+          targetElement.style.transform = "scale(1)";
+        }, 2000);
+      }
+    }
+  </script>
+
+</body>
+</html>
