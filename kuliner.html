@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Panduan Kuliner & Oleh-oleh | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("kacang.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .underline {
+      width: 70px;
+      height: 4px;
+      background: #D4AF37;
+      margin: 0 auto 40px;
+    }
+
+    .section-desc {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #555;
+    }
+
+    .table-container {
+      max-width: 1100px;
+      margin: 20px auto 60px;
+      overflow-x: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 800px;
+    }
+
+    th {
+      background: #8B0000;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: #fdf5f5;
+    }
+
+    .lokasi-link {
+      color: #D4AF37;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lokasi-link:hover {
+      color: #8B0000;
+      text-decoration: underline;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 20px;
+    }
+
+    .info h3 {
+      font-size: 19px;
+      color: #8B0000;
+      margin: 0 0 10px 0;
+    }
+
+    .info p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    .event {
+      margin: 20px auto;
+      padding: 40px 20px;
+      border-radius: 15px;
+      max-width: 800px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .event-market {
+      background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("pasar-bolu.jpg");
+    }
+
+    .event h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .event p {
+      max-width: 600px;
+      margin: 15px auto;
+    }
+
+    #modalDetail {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px;
+      width: 100%;
+      border-radius: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      animation: zoomIn 0.3s ease;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-img {
+      flex: 1 1 350px;
+      max-height: 500px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .modal-text {
+      flex: 1 1 350px;
+      padding: 30px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    .modal-text h3 {
+      color: #8B0000;
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 35px;
+      color: #8B0000;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+      .modal-content { flex-direction: column; }
+      .modal-img { max-height: 250px; }
+      .close-btn { color: white; top: 10px; right: 15px; text-shadow: 0 0 5px black; }
+      .modal-text { padding: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .tab-header {
+        padding: 0 10px;
+      }
+      .tab-aktif, .link-semua {
+        font-size: 14px;
+      }
+      .map-toraja iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <div id="modalDetail">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <img id="modalImg" class="modal-img" src="" alt="">
+      <div class="modal-text">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Kuliner & Oleh-oleh Toraja</h1>
+    <p>Jelajahi kelezatan rasa dan bawa pulang kehangatan dari Toraja</p>
+  </div>
+
+  <section>
+    <h2>Direktori Tempat Makan</h2>
+    <div class="underline"></div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Kategori</th>
+            <th>Rekomendasi Tempat</th>
+            <th>Kisaran Harga</th>
+            <th>Jenis Makanan</th>
+            <th>Lokasi</th>
+            <th>Rating</th>
+            <th>Fasilitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pedagang Kaki Lima</strong></td>
+            <td>Bakso Lapangan Bakti</td>
+            <td>Rp 10rb - 25rb</td>
+            <td>Nasional</td>
+            <td>Rantepao</td>
+            <td>4.2/5</td>
+            <td>Area Terbuka</td>
+          </tr>
+          <tr>
+            <td><strong>Rumah Makan Lokal</strong></td>
+            <td>RM. Rimiko / RM. Mambo</td>
+            <td>Rp 30rb - 80rb</td>
+            <td>Tradisional Toraja</td>
+            <td>Jl. Andi Mappanyukki</td>
+            <td>4.1/5</td>
+            <td>Parkir, Toilet</td>
+          </tr>
+          <tr>
+            <td><strong>Cafe & Bistro</strong></td>
+            <td>Kaana Toraja Coffee</td>
+            <td>Rp 40rb - 100rb</td>
+            <td>Nasional & Western</td>
+            <td>Pusat Rantepao</td>
+            <td>4.8/5</td>
+            <td>WiFi, AC, Musik</td>
+          </tr>
+          <tr>
+            <td><strong>Restoran Hotel</strong></td>
+            <td>Toraja Heritage Resto</td>
+            <td>Rp 150rb - 300rb</td>
+            <td>Internasional</td>
+            <td>Karassik</td>
+            <td>4.1/5</td>
+            <td>View Alam, Lounge</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Makanan & Minuman Wajib Coba</h2>
+    <div class="underline"></div>
+    <p class="section-desc">Klik gambar untuk lihat penjelasan lebih rinci</p>
+    <div class="product-grid">
+      <div class="product-card" onclick="openModal('Pa\'piong', 'masak.jpg', 'Pa\'piong adalah teknik masak khas Toraja dimana daging babi, ayam, atau ikan dicampur dengan daun miana, bawang, dan bumbu rempah, lalu dimasukkan ke dalam bambu muda dan dibakar di atas api. Proses ini membuat aroma smoky dan rasa daging sangat gurih meresap. Biasanya disajikan saat upacara adat atau acara keluarga besar.')">
+        <img src="masak.jpg" alt="Pa'piong">
+        <div class="info">
+          <h3>Pa'piong</h3>
+          <p>Daging yang dimasak di dalam bambu dengan bumbu rempah dan daun miana yang gurih.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Pammarrasan', 'pamarrasan.jpg', 'Pammarrasan adalah masakan berkuah hitam pekat yang menggunakan kluwek sebagai bumbu utama. Daging yang dipakai biasanya babi atau ikan, dimasak dengan santan dan rempah. Rasanya unik, sedikit pahit, gurih, dan sangat khas. Wajib coba kalau ke Toraja karena tidak ada di daerah lain.')">
+        <img src="pamarrasan.jpg" alt="Pammarrasan">
+        <div class="info">
+          <h3>Pammarrasan</h3>
+          <p>Masakan khas menggunakan kluwek hitam yang memberikan cita rasa kuat dan unik.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Kopi Arabika Toraja', 'kopi.jpg', 'Kopi Toraja adalah salah satu kopi terbaik Indonesia. Ditanam di ketinggian 1000-1800 mdpl, membuatnya punya karakter body yang tebal, acidity rendah, dan aroma rempah/tanah yang khas. Sering diekspor ke Jepang dan Eropa. Cara seduh tradisional Toraja adalah tubruk, disajikan hitam tanpa gula.')">
+        <img src="kopi.jpg" alt="Kopi Toraja">
+        <div class="info">
+          <h3>Kopi Arabika Toraja</h3>
+          <p>Kopi dengan aroma rempah khas pegunungan dan tingkat keasaman yang seimbang.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Tuak Ballo', 'ballo.jpg', 'Tuak Ballo adalah minuman fermentasi dari nira pohon aren. Rasanya manis saat masih baru disadap, dan akan berubah menjadi agak asam dan beralkohol jika didiamkan 1-2 hari. Minuman ini wajib ada di setiap upacara adat Toraja sebagai simbol persaudaraan.')">
+        <img src="ballo.jpg" alt="Tuak Ballo">
+        <div class="info">
+          <h3>Tuak Ballo</h3>
+          <p>Minuman tradisional dari nira pohon aren khas masyarakat Toraja.</p>
+        </div>
+      </div>
+     <div class="product-card" onclick="openModal('Deppa Tori\'', 'deppa.jpg', 'Deppa Tori\' adalah kue tradisional Toraja yang wajib ada saat natal dan acara syukuran. Terbuat dari tepung beras, gula merah cair, dan ditaburi wijen. Teksturnya legit dan manis, tahan lama sehingga cocok dijadikan oleh-oleh.')">
+        <img src="deppa.jpg" alt="Deppa Tori">
+        <div class="info">
+          <h3>Deppa-Tori</h3>
+          <p>Kue manis tradisional berbahan dasar tepung beras dan gula merah dengan taburan wijen.</p>
+        </div>
+        </div>
+      <div class="product-card" onclick="openModal('Kapurung', 'kapurung.jpg', 'Kapurung adalah makanan berbahan dasar sagu yang dibentuk bulat-bulat kecil seperti bakso. Disajikan dengan kuah ikan/ayam yang asam pedas, dicampur sayur seperti bayam, kacang panjang, dan jantung pisang. Ini makanan pokok pengganti nasi di Toraja.')">
+        <img src="kapurung.jpg" alt="Kapurung">
+        <div class="info">
+          <h3>Kapurung</h3>
+          <p>Sup sagu dengan sayuran, ikan atau ayam, dan bumbu asam pedas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Oleh-oleh Khas Toraja</h2>
+    <div class="underline"></div>
+    <p class="section-desc">Bawa pulang kenangan dari Tana Toraja. Klik gambar untuk detail.</p>
+    <div class="product-grid">
+      <div class="product-card" onclick="openModal('Kopi Toraja', 'kopi.jpg', 'Kopi Arabika Toraja grade specialty banyak dijual dalam kemasan 250gr dan 1kg. Pilih yang roasting date-nya masih baru. Varian paling terkenal: Sapan, Pangala\', dan Kopi Gayo Toraja. Harga mulai 80rb untuk 250gr. Beli langsung di roastery lebih murah.')">
+        <img src="kopi.jpg" alt="Kopi Toraja">
+        <div class="info">
+          <h3>Kopi Toraja</h3>
+          <p>Kopi Arabika dengan aroma rempah yang unik dan kuat. Wajib beli langsung dari petani.</p>
+          </div>
+        </div>
+      <div class="product-card" onclick="openModal('Kacang Sembunyi', 'kacang.jpg', 'Kacang Sembunyi adalah camilan kacang tanah yang dibalut adonan tepung dan digoreng, lalu dilapisi karamel gula merah. Rasanya manis, gurih, dan renyah. Namanya unik karena kacangnya \'sembunyi\' di dalam balutan tepung.')">
+        <img src="kacang.jpg" alt="Kacang Sembunyi">
+        <div class="info">
+          <h3>Kacang Sembunyi</h3>
+          <p>Camilan renyah kacang tanah berbalut karamel manis.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Miniatur Tongkonan', 'miniatur.jpg', 'Miniatur Tongkonan adalah kerajinan kayu yang diukir manual menyerupai rumah adat asli. Ukurannya beragam dari 15cm sampai 1 meter. Tanduk kerbau di depan rumah menandakan status sosial. Cocok untuk hiasan meja atau lemari.')">
+        <img src="miniatur.jpg" alt="Miniatur Tongkonan">
+        <div class="info">
+          <h3>Miniatur Tongkonan</h3>
+          <p>Hiasan dekoratif kayu yang diukir tangan menyerupai rumah adat asli.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Kain Tenun Toraja', 'tenun.jpg', 'Kain Tenun Toraja punya motif geometris dan warna alam seperti merah, hitam, putih, kuning. Setiap motif punya makna, misalnya Pa\'tangke Lumu\' melambangkan kemakmuran. Proses buatnya manual bisa 1-3 bulan per lembar.')">
+        <img src="tenun.jpg" alt="Kain Tenun Toraja">
+        <div class="info">
+          <h3>Kain Tenun Toraja</h3>
+          <p>Kain tenun tradisional dengan motif khas dan beragam, dibuat manual.</p>
+        </div>
+      </div>
+      <div class="product-card" onclick="openModal('Ukiran Passura\'', 'ukiran.jpg', 'Ukiran Toraja atau Passura\' adalah seni ukir kayu dengan pola-pola pakem. Ada 4 warna utama: merah = darah/hidup, hitam = kematian, putih = daging/kesucian, kuning = matahari/kemuliaan. Biasanya diukir di papan kayu atau dinding Tongkonan.')">
+        <img src="ukiran.jpg" alt="Ukiran Toraja">
+        <div class="info">
+          <h3>Ukiran Passura'</h3>
+          <p>Papan kayu dengan ukiran motif tradisional 4 warna yang punya makna filosofis.</p>
+        </div>
+        </div>
+      <div class="product-card" onclick="openModal('Lada katokkon', 'lada.jpg', 'Lada katokkon adalah cabai kering khas Toraja yang ditumbuk kasar. Rasanya sangat pedas dan aromanya kuat. Biasanya dijadikan sambal atau bumbu Pa\'piong. Dibungkus plastik kecil-kecil, tahan lama dan ringan dibawa.')">
+        <img src="lada.jpg" alt="Ladabaso">
+        <div class="info">
+          <h3>Lada katokkon</h3>
+          <p>Cabai kering tumbuk khas Toraja, super pedas untuk sambal dan bumbu masak.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pasar Tradisional</h2>
+    <div class="underline"></div>
+        <a href="pasartra.html" style="text-decoration: none; color: inherit;">
+    <div class="event event-market">
+      <h3>Pasar Bolu (Pasar Hewan & Kuliner)</h3>
+      <p>Pusat perdagangan kerbau, babi, serta tempat berburu jajanan pasar tradisional Toraja.</p>
+    </div>
+    </a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    function openModal(title, imgSrc, desc) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalDetail').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modalDetail').style.display = 'none';
+    }
+    
+    document.getElementById('modalDetail').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
