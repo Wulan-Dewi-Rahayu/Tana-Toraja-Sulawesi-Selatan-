@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rencana Trip | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("wisata2.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .menu-rencana {
+      max-width: 700px;
+      margin: 0 auto 60px;
+      background: #white;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 22px 25px;
+      color: #222222;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #999;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      width: 35px;
+      text-align: center;
+    }
+
+    .menu-text {
+      flex: 1;
+      text-align: left;
+      margin-left: 15px;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .menu-arrow {
+      font-size: 24px;
+      color: #999;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      text-align: left;
+      border-top: 5px solid #8B0000;
+    }
+
+    .info-card h3 {
+      color: #8B0000;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .transport-box {
+      background: #8B0000;
+      color: white;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin: 40px 0;
+    }
+
+    .transport-box h2 {
+      margin-top: 0;
+      color: white;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+      .nav-links.active { right: 0; }
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+      .hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Rencana Trip</h1>
+    <p>Rencanakan perjalanan Anda dengan matang</p>
+  </div>
+
+  <section>
+    <div class="menu-rencana">
+      <a href="itinerary.html" class="menu-item">
+        <div class="menu-icon">📅</div>
+        <span class="menu-text">Itinerary</span>
+        <span class="menu-arrow">›</span>
+      </a>
+      <a href="penginapan.html" class="menu-item">
+        <div class="menu-icon">🏨</div>
+        <span class="menu-text">Penginapan</span>
+        <span class="menu-arrow">›</span>
+      </a>
+      <a href="info.html" class="menu-item">
+        <div class="menu-icon">ℹ️</div>
+        <span class="menu-text">Info Wisata</span>
+        <span class="menu-arrow">›</span>
+      </a>
+      <a href="wisata-bertanggung.html" class="menu-item">
+        <div class="menu-icon">♻️</div>
+        <span class="menu-text">Wisata Bertanggung Jawab</span>
+        <span class="menu-arrow">›</span>
+      </a>
+    </div>
+
+    <h2>Persiapan Trip</h2>
+    <div class="grid-container">
+      
+      <div class="info-card">
+        <h3>Syarat Perjalanan</h3>
+        <p>Pastikan membawa dokumen penting:</p>
+        <ul>
+          <li><strong>KTP/Paspor:</strong> Identitas diri wajib dibawa untuk check-in transportasi dan penginapan.</li>
+          <li><strong>Tiket Elektronik:</strong> Simpan salinan digital tiket pesawat atau bus di ponsel.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Mata Uang & Konektivitas</h3>
+        <ul>
+          <li><strong>Mata Uang:</strong> Rupiah (IDR). Disarankan membawa uang tunai karena ATM terbatas di area desa adat.</li>
+          <li><strong>SIM Card:</strong> Telkomsel memiliki jangkauan terbaik di wilayah pegunungan Toraja.</li>
+          <li><strong>Wi-Fi:</strong> Tersedia di beberapa hotel besar dan cafe di pusat kota Rantepao.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="transport-box">
+      <h2>Transportasi</h2>
+      <p>Pilihan cara menuju dan berkeliling di Tana Toraja:</p>
+      <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div style="text-align: left;">
+          <h4>Menuju Toraja</h4>
+          <ul>
+            <li><strong>Pesawat:</strong> Melalui Bandara Buntu Kunik (Toraja Airport) dari Makassar.</li>
+            <li><strong>Bus Malam:</strong> Dari Makassar dengan waktu tempuh sekitar 8-9 jam.</li>
+          </ul>
+        </div>
+        <div style="text-align: left;">
+          <h4>Berkeliling</h4>
+          <ul>
+            <li><strong>Sewa Mobil:</strong> Pilihan terbaik untuk bersama keluarga.</li>
+            <li><strong>Sewa Motor:</strong> Cocok untuk petualang yang ingin fleksibel.</li>
+            <li><strong>Ojek:</strong> Tersedia di banyak daerah untuk jarak pendek.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
