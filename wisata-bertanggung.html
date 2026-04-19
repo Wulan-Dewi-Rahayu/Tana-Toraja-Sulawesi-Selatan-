@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wisata Bertanggung Jawab | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("bukit.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border: 1px solid #D4AF37;
+    }
+
+    .product-card h3 {
+      color: #8B0000;
+      margin: 10px 0;
+      border-bottom: 2px solid #D4AF37;
+      padding-bottom: 5px;
+      font-size: 19px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: #8B0000;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .section-penting {
+      background: #eee;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section-penting p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Konservasi</h1>
+    <p>Mari menjaga kelestarian alam dan budaya Tana Toraja untuk generasi mendatang</p>
+  </header>
+
+  <section>
+    <h2>Pedoman Perjalanan</h2>
+    <div class="product-grid">
+      
+      <div class="product-card">
+        <div class="badge">Green Rules</div>
+        <h3>Aturan Hijau</h3>
+        <p>Beredukasi bagi wisatawan untuk menjaga alam dengan kampanye bebas plastik dan perlindungan satwa liar di sekitar area wisata.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="badge">Community Support</div>
+        <h3>Dukungan Lokal</h3>
+        <p>Memberikan informasi mengenai cara wisatawan dapat berdonasi atau membeli produk asli UMKM lokal Toraja sebagai bentuk dukungan ekonomi bagi masyarakat sekitar.</p>
+      </div>
+
+      <div class="product-card">
+        <div class="badge">Eco-Volunteering</div>
+        <h3>Relawan Eko</h3>
+        <p>Peluang bagi wisatawan untuk ikut serta dalam kegiatan melestarikan lingkungan selama masa liburan mereka di Toraja.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section-penting">
+    <h2>Mengapa ini Penting?</h2>
+    <p>Halaman ini berfungsi untuk mengedukasi setiap pengunjung agar tetap menjaga keindahan alam kota maupun kabupaten yang menjadi tujuan wisata mereka.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
