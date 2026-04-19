@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tana Toraja | Sulawesi Selatan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+    
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .card h3 {
+      color: #8B0000;
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      position: relative;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      filter: brightness(50%);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    }
+
+    .search-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .search-box select {
+      padding: 12px 20px;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      outline: none;
+      font-size: 14px;
+      min-width: 250px;
+    }
+
+    .search-box button {
+      padding: 12px 30px;
+      background: #D4AF37;
+      color: #8B0000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background: #8B0000;
+      color: white;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .tab-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #eee;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px 10px 20px;
+    }
+
+    .tab-aktif {
+      color: #8B0000;
+      font-weight: 600;
+      font-size: 16px;
+      border-bottom: 3px solid #8B0000;
+      padding-bottom: 3px;
+    }
+
+    .link-semua {
+      color: #8B0000;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500; 
+    }
+
+    .link-semua:hover {
+      color: #D4AF37;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 230px;
+      padding: 15px;
+      transition: transform 0.3s, border 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .event {
+      margin: 20px auto;
+      padding: 50px 20px;
+      border-radius: 15px;
+      max-width: 800px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .event h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .event-rambu {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("rambusolo.jpg");
+    }
+
+    .event-festival {
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("festival.jpg");
+    }
+    
+    .kesan-section {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .kesan-section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #222222;
+    }
+
+    .galeri-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .galeri-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+    }
+
+    .galeri-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .caption-bar {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 8px 5px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 2;
+      transition: 0.3s;
+    }
+
+    .galeri-item:hover .caption-bar {
+      bottom: 0;
+    }
+
+    .galeri-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .galeri-item.overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 32px;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px); 
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto; 
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .galeri-item:nth-child(3) {
+        grid-column: span 1;
+      }
+      .overlay-text {
+        font-size: 24px;
+      }
+      .tab-header {
+        padding: 0 10px;
+      }
+      .tab-aktif, .link-semua {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+<header class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="video-toraja.mp4" type="video/mp4">
+  </video>
+  <h1>Jelajahi Tana Toraja</h1>
+  <p>Keindahan Alam dan Budaya Sulawesi Selatan</p>
+  <div class="search-box">
+    <select id="minat-khusus">
+      <option value="">Pilih Minat Khusus</option>
+      <option value="kete-kesu">Wisata Budaya & Sejarah</option>
+      <option value="lolai">Wisata Alam & Pemandangan</option>
+      <option value="londa">Wisata Sejarah & Religi</option>
+      <option value="buntu-burake">Wisata Religi & Landmark</option>
+    </select>
+    <button type="button" onclick="cariTujuan()">Cari Tujuan</button>
+  </div>
+</header>
+
+  <section>
+    <h2>Destinasi Terpopuler</h2>
+    
+    <div class="tab-header">
+      <span class="tab-aktif">Pilihan Terbaik</span>
+      <a href="destinasi.html" class="link-semua">Tampilkan destinasi lain →</a>
+    </div>
+
+    <div class="cards">
+      <a href="destinasiketekesu.html" style="text-decoration: none; color: inherit;">
+        <div class="card" id="kete-kesu">
+          <img src="ketekesu.jpg" alt="Kete Kesu">
+          <h3>Kete Kesu</h3>
+          <p>Desa adat dengan rumah Tongkonan dan kuburan batu.</p>
+        </div>
+      </a>
+      
+      <a href="destinasilolai.html" style="text-decoration: none; color: inherit;">
+        <div class="card" id="lolai">
+          <img src="lolai.jpg" alt="Lolai">
+          <h3>Lolai</h3>
+          <p>Dikenal sebagai negeri di atas awan yang sangat cantik.</p>
+        </div>
+      </a>
+      
+      <a href="destinasilonda.html" style="text-decoration: none; color: inherit;">
+        <div class="card" id="londa">
+          <img src="londa.jpg" alt="Londa">
+          <h3>Londa</h3>
+          <p>Goa pemakaman tradisional Toraja.</p>
+        </div>
+      </a>
+      
+      <a href="destinasibuntu.html" style="text-decoration: none; color: inherit;">
+        <div class="card" id="buntu-burake">
+          <img src="buntuburake.jpg" alt="Buntu Burake">
+          <h3>Buntu Burake</h3>
+          <p>Patung Yesus dengan pemandangan indah.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+  
+  <section>
+    <h2>Event Budaya</h2>
+    <a href="eventsolo.html" style="text-decoration: none; color: inherit;">
+      <div class="event event-rambu">
+        <h3>Upacara Rambu Solo</h3>
+        <p>Upacara pemakaman adat yang sangat terkenal di Tana Toraja.</p>
+      </div>
+    </a>
+    
+    <a href="eventfestival.html" style="text-decoration: none; color: inherit;">
+      <div class="event event-festival">
+        <h3>Festival Budaya Toraja</h3>
+        <p>Festival yang menampilkan tarian, musik, dan tradisi Toraja.</p>
+      </div>
+    </a>
+  </section>
+  
+  <section class="kesan-section">
+    <h2>Dokumentasi Toraja</h3>
+    
+    <div class="tab-header">
+      <span class="tab-aktif">Gambar</span>
+      <a href="galeri.html" class="link-semua">Tampilkan semua media →</a>
+    </div>
+    
+    <div class="galeri-grid">
+      <div class="galeri-item" onclick="openLightbox(this.querySelector('img').src, 'Kain Tenun Sa'dan')">
+        <img src="sadan.jpg" alt="Lolai">
+        <div class="caption-bar">Kain Tenun Sa'dan</div>
+      </div>
+      <div class="galeri-item" onclick="openLightbox(this.querySelector('img').src, 'Kuburan tebing lemo')">
+        <img src="londaa.jpg" alt="Kuburan Tebing Lemo">
+        <div class="caption-bar">Kuburan tebing Lemo</div>
+      </div>
+      <div class="galeri-item" onclick="openLightbox(this.querySelector('img').src, 'Air Terjun Serambu Alla')">
+        <img src="alla.jpg" alt="Serambu Ala">
+        <div class="caption-bar">Serambu Alla'</div>
+      </div>
+      <div class="galeri-item" onclick="openLightbox(this.querySelector('img').src, 'Bukit Ollon Valley')">
+        <img src="bukit.jpg" alt="Bukit Ollon Valley">
+        <div class="caption-bar">Bukit Ollon Valley</div>
+      </div>
+      <div class="galeri-item" onclick="openLightbox(this.querySelector('img').src, 'Kebun Teh Pango')">
+        <img src="pango.jpg" alt="Pango-pango">
+        <div class="caption-bar">Kebun teh Pango</div>
+      </div>
+      <div class="galeri-item overlay" onclick="location.href='galeri.html'">
+        <img src="wisata1.jpg" alt="Pemandangan Tongkonan">
+        <div class="overlay-text">+8</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    function cariTujuan() {
+      const pilihan = document.getElementById('minat-khusus').value;
+      if (pilihan === "") {
+        alert("Silakan pilih minat khusus terlebih dahulu!");
+        return;
+      }
+      const targetElement = document.getElementById(pilihan);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetElement.style.border = "2px solid #D4AF37";
+        targetElement.style.transform = "scale(1.05)";
+        setTimeout(() => {
+          targetElement.style.border = "1px solid #ddd";
+          targetElement.style.transform = "scale(1)";
+        }, 2000);
+      }
+    }
+  </script>
+
+</body>
+  </html>
