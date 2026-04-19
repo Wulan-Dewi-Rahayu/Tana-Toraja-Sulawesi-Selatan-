@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pusat Bantuan | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("pango.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #8B0000;
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 300px;
+      padding: 25px;
+      text-align: left;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #8B0000;
+      border-bottom: 2px solid #D4AF37;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .faq-section {
+      background: #eee;
+    }
+
+    .faq-item {
+      text-align: left;
+      max-width: 800px;
+      margin: 10px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 5px solid #D4AF37;
+    }
+
+    .faq-item strong {
+      color: #8B0000;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Pusat Bantuan & Informasi</h1>
+    <p>Kami siap membantu perjalanan Anda di Tana Toraja agar tetap aman dan nyaman</p>
+  </header>
+
+  <section>
+    <h2>Emergency Numbers/Nomor Darurat</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Layanan Polisi</h3>
+        <p>Polres Tana Toraja: <strong>(0423) 22110</strong></p>
+        <p>Bantuan darurat keamanan di area wisata.</p>
+      </div>
+      <div class="card">
+        <h3>Ambulan & Medis</h3>
+        <p>RSUD Lakipadada: <strong>(0423) 222-64 / 0813 547 10222</strong></p>
+        <p>Layanan gawat darurat medis 24 jam.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2>Pertanyaan Umum (FAQ)</h2>
+    <div class="faq-item">
+      <strong>Apakah air keran bisa langsung diminum?</strong>
+      <p>Tidak disarankan. Sebaiknya minum air kemasan atau air yang sudah dimasak.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Bagaimana kondisi cuaca di Toraja?</strong>
+      <p>Cuaca di Toraja sejuk dan sering hujan. Siapkan jaket dan payung saat berkunjung.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Apakah aman berwisata sendirian?</strong>
+      <p>Sangat aman. Namun, disarankan untuk tetap mengikuti etika lokal dan adat di sekitar tempat dan menggunakan jasa pemandu lokal jika masuk ke area sakral.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
