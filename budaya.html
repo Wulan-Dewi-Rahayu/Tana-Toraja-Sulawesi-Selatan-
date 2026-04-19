@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Budaya & Warisan | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("londaa.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .info-box {
+      max-width: 850px;
+      margin: 0 auto 30px;
+      background: white;
+      padding: 30px;
+      border-left: 5px solid #8B0000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .info-box h2 {
+      color: #8B0000;
+      margin-top: 0;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #8B0000;
+      margin-top: 15px;
+    }
+
+    details p {
+      margin-top: 10px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 250px;
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.3s, border 0.3s;
+    }
+
+    .card h3 {
+      color: #8B0000;
+      margin-top: 0;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border: 1px solid #D4AF37;
+    }
+
+    /* EVENT */
+    .event {
+      margin: 20px auto;
+      padding: 40px 20px;
+      border-radius: 15px;
+      max-width: 800px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .event h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .event ul {
+      text-align: left;
+      display: inline-block;
+      list-style: circle;
+      padding-left: 20px;
+    }
+
+    .event ul li {
+      margin-bottom: 10px;
+    }
+
+    .event-rules {
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("etika.jpg");
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body
+  
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+  </div>
+
+  <div class="hero">
+    <h1>Budaya & Warisan</h1>
+    <p>Sejarah dan tradisi Tana Toraja</p>
+  </div>
+
+  <section>
+    <div class="info-box">
+      <h2>Sejarah Singkat Tana Toraja</h2>
+      <p>Tana Toraja merupakan daerah pegunungan di Sulawesi Selatan yang sejak dulu dihuni oleh suku Toraja. Nama Toraja berasal dari bahasa Bugis, yaitu <strong>"To Riaja"</strong> yang berarti <strong>orang yang tinggal di daerah atas atau pegunungan</strong>.</p>
+      
+      <details>
+        <summary>Baca Selengkapnya</summary>
+        <p>Pada zaman dulu, masyarakat Toraja hidup dalam kelompok-kelompok kecil yang disebut <strong>pa'rapuan</strong>, dipimpin oleh kepala adat yang bergelar <strong>To Parenge'</strong>. Mereka menganut kepercayaan <strong>Aluk To Dolo</strong>, yaitu aturan hidup leluhur yang mengatur segala aspek kehidupan mulai dari kelahiran, pertanian, hingga kematian.</p>
+        <p>Pada abad ke-17 hingga abad ke-19, wilayah Toraja mulai berinteraksi dengan kerajaan-kerajaan Bugis dan Luwu di sekitarnya. Meski mendapat pengaruh dari luar, masyarakat Toraja tetap mempertahankan budaya dan sistem kepercayaan mereka. Kontak dengan dunia luar juga membawa masuknya agama Kristen oleh misionaris Belanda pada awal abad ke-20.</p>
+        <p>Saat masa kolonial Belanda, Toraja dikenal sebagai daerah yang sulit ditaklukkan karena kondisi geografis pegunungan dan perlawanan masyarakat adat. Belanda baru benar-benar masuk ke Toraja sekitar tahun 1905 dan mendirikan pemerintahan sipil di Makale dan Rantepao.</p>
+        <p>Setelah Indonesia merdeka, Tana Toraja menjadi bagian dari provinsi Sulawesi Selatan. Pada tahun 1957, Tana Toraja resmi menjadi kabupaten sendiri. Sejak saat itu, budaya unik Toraja mulai dikenal luas hingga ke mancanegara, terutama upacara Rambu Solo' dan arsitektur Tongkonan yang khas.</p>
+        <p>Hingga kini, meski mayoritas sudah memeluk agama Kristen dan Islam, masyarakat Toraja tetap menjalankan adat Aluk To Dolo secara sinkretis dalam upacara-upacara penting. Warisan budaya ini yang membuat Toraja diakui sebagai salah satu destinasi budaya terpenting di Indonesia.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h2>UNESCO World Heritage</h2>
+    <p>Daftar situs warisan dunia yang diakui secara internasional di Toraja:</p>
+    <div class="cards">
+      <div class="card">
+        <img src="ketekesu.jpg" alt="Kete Kesu" onclick="openLightbox(this.src)">
+        <h3>Desa Kete Kesu</h3>
+        <p>Pemukiman tradisional dengan deretan rumah Tongkonan dan lumbung padi yang sudah berusia ratusan tahun.</p>
+      </div>
+      <div class="card">
+        <img src="londaa.jpg" alt="Londa" onclick="openLightbox(this.src)">
+        <h3>Situs Londa</h3>
+        <p>Situs pemakaman gua alam yang sangat sakral dan menunjukkan sistem sosial budaya Toraja.</p>
+      </div>
+      <div class="card">
+        <img src="pallawa.jpg" alt="Pallawa" onclick="openLightbox(this.src)">
+        <h3>Situs Pallawa</h3>
+        <p>Kompleks rumah adat tertua dengan dekorasi tanduk kerbau yang melambangkan kejayaan keluarga.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Etika Lokal (Do's & Don'ts)</h2>
+    <div class="event event-rules">
+      <h3>Panduan Berkunjung</h3>
+      <ul>
+        <li>Berpakaian dengan sopan (menutup bahu dan lutut) saat masuk ke lokasi adat atau upacara.</li>
+        <li>Meminta izin sebelum mengambil foto masyarakat, rumah pribadi, atau prosesi ritual.</li>
+        <li>Ucapkan "Kurre Sumanga" (Terima Kasih) sebagai bentuk penghargaan kepada warga.</li>
+        <li>Dilarang menyentuh tengkorak, peti, atau sesajen di situs pemakaman gua seperti Londa dan Lemo.</li>
+        <li>Jika diundang ke upacara Rambu Solo', bawalah babi, rokok, atau amplop sebagai tanda penghormatan.</li>
+        <li>Jangan menggunakan drone tanpa izin di area upacara atau kompleks Tongkonan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = src;
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
