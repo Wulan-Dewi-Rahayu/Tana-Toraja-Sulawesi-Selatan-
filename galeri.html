@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Galeri | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .btn-back {
+      position: fixed;
+      left: 20px;
+      top: 80px;
+      background: #8B0000;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: 0.3s;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-back:hover {
+      background: #D4AF37;
+      color: #8B0000;
+      left: 25px;
+    }
+
+    .hero {
+      position: relative;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("wisata3.jpg");
+      background-size: cover;
+      background-position: center;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-container {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-title {
+      text-align: center;
+      color: #8B0000;
+      margin-bottom: 40px;
+    }
+
+    .gallery-title h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .gallery-title .underline {
+      width: 80px;
+      height: 4px;
+      background: #D4AF37;
+      margin: auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      height: 250px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border: 1px solid #D4AF37;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(139, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      text-align: center;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .gallery-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .btn-back {
+        top: 70px;
+        left: 10px;
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+
+  <header class="hero">
+    <h1>Galeri Toraja</h1>
+    <p>Abadikan keindahan bersama Toraja</p>
+  </header>
+
+  <main class="gallery-container">
+    <div class="gallery-title">
+      <h2>Dokumentasi Wisata</h2>
+      <div class="underline"></div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="wisata1.jpg" alt="Budaya Toraja">
+        <div class="overlay">Pemandangan Tongkonan</div>
+      </div>
+      <div class="gallery-item">
+        <img src="sunrise.jpg" alt="Lolai Toraja">
+        <div class="overlay">Sunrise di Lolai</div>
+      </div>
+      <div class="gallery-item">
+        <img src="rambusolo.jpg" alt="Rambu Solo">
+        <div class="overlay">Upacara Adat Rambu Solo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="ketekesu.jpg" alt="Kete Kesu">
+        <div class="overlay">Desa Kete Kesu</div>
+      </div>
+      <div class="gallery-item">
+        <img src="londa.jpg" alt="Londa">
+        <div class="overlay">Gua Londa</div>
+      </div>
+      <div class="gallery-item">
+        <img src="lolai.jpg" alt="Negeri Atas Awan">
+        <div class="overlay">Negeri di atas Awan</div>
+      </div>
+      <div class="gallery-item">
+        <img src="buntuburake.jpg" alt="Buntu Burake">
+        <div class="overlay">Patung Buntu Burake</div>
+      </div>
+      <div class="gallery-item">
+        <img src="festival.jpg" alt="Festival Toraja">
+        <div class="overlay">Festival Budaya Toraja</div>
+      </div>
+      <div class="gallery-item">
+        <img src="londaa.jpg" alt="Kuburan Tebing Lemo">
+        <div class="overlay">Kuburan Tebing Lemo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pasar-bolu.jpg" alt="Pasar Bolu Tradisional">
+        <div class="overlay">Pasar Tradisional, Pasar Bolu</div>
+      </div>
+      <div class="gallery-item">
+        <img src="bukit.jpg" alt="Bukit Ollon Valley">
+        <div class="overlay">Bukit Ollon Valley</div>
+      </div>
+      <div class="gallery-item">
+        <img src="sarambu.jpg" alt="Sarambu Assing">
+        <div class="overlay">Air terjun Sarambu Assing</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
