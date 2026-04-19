@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Booking Trip | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hero {
+      position: relative;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("alla.jpg");
+      background-size: cover;
+      background-position: center;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: -60px auto 50px;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    .form-title {
+      color: #8B0000;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #D4AF37;
+      display: inline-block;
+      width: 100%;
+      padding-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #8B0000;
+      margin: 25px 0 15px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .form-group {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #8B0000;
+      background: #fffdfd;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: #D4AF37;
+      color: #8B0000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #8B0000;
+      color: white;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+      .container { padding: 25px; margin: -40px auto 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">TANA TORAJA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">BERANDA</a></li>
+      <li><a href="destinasi.html">DESTINASI</a></li>
+      <li><a href="aktivitas.html">AKTIVITAS</a></li>
+      <li><a href="budaya.html">BUDAYA</a></li>
+      <li><a href="kuliner.html">KULINER</a></li>
+      <li><a href="rencana.html">RENCANA TRIP</a></li>
+      <li><a href="galeri.html">GALERI</a></li>
+      <li><a href="booking.html">BOOKING</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Formulir Pemesanan</h1>
+    <p>Segera buat pesanan untuk pengalaman terbaik di Toraja</p>
+  </header>
+
+  <div class="container">
+    <h2 class="form-title">Formulir Pemesanan</h2>
+    
+    <form id="bookingForm">
+      <div class="section-title">Data Pribadi & Akun</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" placeholder="Masukan nama sesuai KTP" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="contoh@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label>Password Akun</label>
+          <input type="password" placeholder="Buat password baru" required>
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="tel" placeholder="0812xxxxxx" required>
+        </div>
+        <div class="form-group full-width">
+          <label>Alamat Lengkap</label>
+          <textarea rows="3" placeholder="Masukkan alamat lengkap..."></textarea>
+        </div>
+      </div>
+
+      <div class="section-title">Detail Pemesanan</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Pilih Paket Wisata</label>
+          <select required>
+            <option value="">Pilih Paket </option>
+            <option>The-First-Timer (7Hari)</option>
+            <option>Off-The-Beaten-Path (14 Hari)</option>
+            <option>Paket Budget</option>
+            <option>Paket Luxury</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Metode Pembayaran</label>
+          <select required>
+            <option value="">Pilih Metode</option>
+            <option>Transfer Bank (BCA/Mandiri/BNI)</option>
+            <option>E-Wallet (Dana/OVO/QRIS)</option>
+            <option>Kartu Kredit</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Opsi Transportasi</label>
+          <select>
+            <option>Pesawat</option>
+            <option>Bus Malam</option>
+            <option>Sewa Mobil</option>
+            <option>Sewa Motor</option>
+            <option>Ojek</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pilih Penginapan</label>
+          <select>
+            <option>Pilih Penginapan</option>
+            <option>Eco-Friendly Stay (Toraja Heritage Hotel)</option>
+            <option>Staycation Idea (Misiliana Hotel)</option>
+            <option>Authentic Experience (Homestay Desa Adat)</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label>Layanan Tambahan/Pesanan Khusus</label>
+          <textarea rows="2" placeholder="Contoh: Pemandu bahasa asing, makanan, dll..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Konfirmasi Pesanan</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      alert("Data pesanan Anda berhasil, selengkapnya akan kami hubungi via WhatsApp, terimakasih.");
+      
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
