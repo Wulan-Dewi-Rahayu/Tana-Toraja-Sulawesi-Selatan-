@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Destinasi | Tana Toraja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #F8F8F8;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #8B0000;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #D4AF37;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { 
+      transform: rotate(45deg) translate(5px, 5px); 
+    }
+    .hamburger.active span:nth-child(2) { 
+      transform: rotate(-45deg) translate(5px, -5px); 
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("pallawa.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .tab-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #eee;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+
+    .tab-aktif {
+      color: #8B0000;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+      border-bottom: 3px solid #8B0000;
+      padding-bottom: 10px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 230px;
+      padding: 15px;
+      transition: transform 0.3s, border 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      color: #222222;
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border: 1px solid #D4AF37;
+    }
+
+    .map-toraja {
+      max-width: 980px;
+      margin: 20px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 1px solid #ddd;
+    }
+
+    .map-toraja iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .fact-box {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: #8B0000;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #8B0000;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.4s;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links li a {
+        font-size: 18px;
+        display: block;
+        padding: 10px 0;
+      }
+
+      .hero h1 { font-size: 30px; }
+    }
+
+    @media (max-width: 600px) {
+      .tab-header {
+        padding: 0 10px;
+      }
+      .tab-aktif, .link-semua {
+        font-size: 14px;
+      }
+      .map-toraja iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">TANA TORAJA</a>
+  
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">BERANDA</a></li>
+    <li><a href="destinasi.html">DESTINASI</a></li>
+    <li><a href="aktivitas.html">AKTIVITAS</a></li>
+    <li><a href="budaya.html">BUDAYA</a></li>
+    <li><a href="kuliner.html">KULINER</a></li>
+    <li><a href="rencana.html">RENCANA TRIP</a></li>
+    <li><a href="galeri.html">GALERI</a></li>
+    <li><a href="booking.html">BOOKING</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+  <div class="hero">
+    <h1>Destinasi Wisata</h1>
+    <p>Jelajahi Keindahan Tana Toraja</p>
+  </div>
+
+  <section>
+    <h2>Destinasi Lainnya</h2>
+    
+    <div class="tab-header">
+      <span class="tab-aktif">Rekomendasi</span>
+    </div>
+
+    <div class="cards">
+      <a href="destinasisarambu.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="sarambu.jpg" alt="Sarambu Assing">
+          <h3>Sarambu Assing</h3>
+          <p>Air terjun bertingkat dengan kolam alami yang jernih.</p>
+        </div>
+      </a>
+      
+      <a href="destinasinegandeng.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="gandeng.jpg" alt="Museum Ne'Gandeng">
+          <h3>Museum Ne'Gandeng</h3>
+          <p>Museum budaya yanh menyimpan peninggalan sejarah Toraja.</p>
+        </div>
+      </a>
+      
+      <a href="destinasipallawa.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="pallawa.jpg" alt="Pallawa">
+          <h3>Pallawa</h3>
+          <p>Desa adat dengan deretan Tongkonan tertua di Toraja.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Peta Tana Toraja</h2>
+    <p>Lihat persebaran lokasi wisata di seluruh wilayah</p>
+    
+    <div class="map-toraja">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254805.97108474796!2d119.681037!3d-3.004674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d93e9770c7c0f21%3A0x1dc1bb67c7b5c4e!2sKabupaten%20Tana%20Toraja!5e0!3m2!1sid!2sid!4v1712560000004!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kategori Wilayah</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Utara Tropis</h3>
+        <p>Wilayah Batutumonga, Lolai, Sarambu Assing dengan pemandangan gunung dan air terjun.</p>
+      </div>
+      <div class="card">
+        <h3>Pusat Warisan</h3>
+        <p>Pusat budaya di Rantepao: Kete Kesu, Pallawa, Museum Ne'Gandeng, Londa.</p>
+      </div>
+      <div class="card">
+        <h3>Pusat Kota</h3>
+        <p>Pusat kota Makale dengan ikon Patung Yesus Buntu Burake dan akses kuliner.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Informasi Jarak</h2>
+    <div class="fact-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Rute</th>
+            <th>Jarak</th>
+            <th>Waktu Tempuh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rantepao - Pallawa</td>
+            <td>12 km</td>
+            <td>30 Menit</td>
+          </tr>
+          <tr>
+            <td>Rantepao - Sarambu Assing</td>
+            <td>25 km</td>
+            <td>1 Jam</td>
+          </tr>
+          <tr>
+            <td>Makale - Museum Ne'Gandeng</td>
+            <td>8 km</td>
+            <td>20 Menit</td>
+          </tr>
+          <tr>
+            <td>Makassar - Toraja</td>
+            <td>310 km</td>
+            <td>8-9 Jam</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Tana Toraja.</p>
+    <p>Dibuat oleh <strong>Wulan Dewi Rahayu</strong> (X-PPLG 2)</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      const hamburger = document.querySelector('.hamburger');
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
